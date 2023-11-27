@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/pokemon/pikachu', function () {
+    return [
+        "id" => 1,
+        "name" => "Pikachu",
+        "power" => "Electric"
+    ];
+});
