@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function () {
-    return view('about');
+Route::get('/{genre}/{artist}/{song}', function (Request $request, $genre, $artist, $song) {
+    // dd($request->query("min"));
+    $content = "<h1>{$song} {$request->query("min")}:{$request->query("max")}</h1> <h2>{$artist}</h2> <h4>{$genre}<h4>";
+    return $content;
 });
 
-Route::get('/pokemon/pikachu', function () {
-    return [
-        "id" => 1,
-        "name" => "Pikachu",
-        "power" => "Electric"
-    ];
-});
