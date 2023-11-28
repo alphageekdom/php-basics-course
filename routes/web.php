@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -16,8 +17,16 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/home');
 });
+
+Route::get('/about', function () {
+    return view('pages/about');
+});
+
+Route::get('/', [PageController::class, "index"]);
+Route::get('/about', [PageController::class, "about"]);
+
 
 Route::prefix('/pop')->group(function() {
     Route::get('/{artist}/{song}', function (Request $request, $artist, $song) {
