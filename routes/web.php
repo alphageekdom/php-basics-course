@@ -18,9 +18,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{genre}/{artist}/{song}', function (Request $request, $genre, $artist, $song) {
-    // dd($request->query("min"));
-    $content = "<h1>{$song} {$request->query("min")}:{$request->query("max")}</h1> <h2>{$artist}</h2> <h4>{$genre}<h4>";
-    return $content;
+Route::prefix('/pop')->group(function() {
+    Route::get('/{artist}/{song}', function (Request $request, $artist, $song) {
+        // dd($request->query("min"));
+        $content = "<h1>{$song} {$request->query("min")}:{$request->query("max")}</h1> <h2>{$artist}</h2> <h4>Pop<h4>";
+        return $content;
+    });
+
+    Route::get('/test', function () {
+        return "test";
+    });
+    
+    Route::get('/about', function () {
+        return "about";
+    });
+    
 });
+
+
 
